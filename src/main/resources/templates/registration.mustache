@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Registration</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500&family=Noto+Serif+JP:wght@500&display=swap" rel="stylesheet">
+    <style>
+        *:not(title){
+            font-family: 'Montserrat', sans-serif;
+            font-size: clamp(23px, 3vw, 23px);
+            color: #FF8848;
+        }
+        body{
+            background-image: url("/waves.png");
+            background-repeat: no-repeat;
+            background-position: center bottom;
+            background-color: #f4f1f1;
+            background-size: cover;
+            min-width: 100vw;
+            min-height: 100vh;
+            padding: 0;
+            margin: 0;
+            backdrop-filter: blur(1px);
+        }
+
+        .wrapper{
+            height: 100vh;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        form{
+            min-width: 43%;
+            min-height: 36%;
+            background-color: #673ab778;
+            backdrop-filter: blur(1px);
+            border-radius: 20px;
+            display: flex;
+            justify-content: space-evenly;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        title {
+            font-size: clamp(12px, 3vw, 36px);
+            display: flex;
+            justify-content: center;
+            letter-spacing: 0.4rem;
+            font-family: 'Noto Serif JP', serif;
+            font-weight: 500;
+            color: #000;
+        }
+
+        label, input{
+            font-size: clamp(16px, 2vw, 18px);
+            color: #000;
+        }
+
+        input{
+            border:0;
+            border-bottom:1px solid #000;
+            background:transparent;
+            width:100%;
+            padding: 10px 0 6px 0;
+            font-size:16px;
+        }
+
+        .button{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 6px 14px;
+            border-radius: 6px;
+            border: 1px solid;
+            background: #805e9459;
+        }
+
+        .button:focus {
+            box-shadow: inset 0px 0.8px 0px -0.25px rgba(255, 255, 255, 0.2), 0px 0.5px 1px rgba(0, 0, 0, 0.1), 0px 0px 0px 3.5px rgba(58, 108, 217, 0.5);
+            outline: 0;
+        }
+
+        a{
+            color: #49484f;
+        }
+    </style>
+</head>
+<body>
+<div class="wrapper">
+    {{#message}}
+        {{message}}
+    {{/message}}
+    <form action="/registration" method="post">
+        <title>Registration</title>
+        <div><label> User Name : <input type="text" name="username"/> </label></div>
+        <div><label> Password: <input type="password" name="password"/> </label></div>
+        <input type="hidden" name="_csrf" value="{{_csrf.token}}"/>
+        <div><input class="button" type="submit" value="Create"/></div>
+    </form>
+</div>
+</body>
+</html>
